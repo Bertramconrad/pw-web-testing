@@ -106,3 +106,21 @@ test('Extracting values', async({page}) =>{
     expect(placeholderValue).toEqual('Email')
 
 })
+
+test('Assertions', async({page}) => {
+    
+    const basicFormButton = page.locator('nb-card').filter({hasText: "Basic form"}).locator('button')
+     
+    //General assertions
+    const value = 5
+    expect(value).toEqual(5)
+
+    const textButton = await basicFormButton.textContent()
+    expect(textButton).toEqual('Submit')
+
+    //Locator Assertion
+    await expect(basicFormButton).toHaveText('Submit')
+
+    //Soft Assertion
+    await expect.soft(basicFormButton).toHaveText('Submit')
+})
