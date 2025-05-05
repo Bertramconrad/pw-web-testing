@@ -92,3 +92,41 @@ test('Checkboxes', async({page}) => {
     }
 
 })
+
+test('Lists and Dropdowns', async({page}) =>{
+
+    const dropDownMenu = page.locator('ngx-header nb-select')
+    await dropDownMenu.click()
+
+    //page.getByRole('list') //When the list has a ul tag
+    //page.getByRole('listitem') //When the list has a li tag
+
+    const optionList = page.locator('nb-option-list nb-option')
+    //Validating the list has all the elements
+    await expect(optionList).toHaveText(["Light","Dark","Cosmic","Corporate"])
+
+    await optionList.filter({hasText: "Cosmic"}).click()
+    //await page.waitForTimeout(2000)
+    //await optionList.filter({hasText: "Light"}).click()
+    //await page.waitForTimeout(2000)
+    //await optionList.filter({hasText: "Corporate"}).click()
+
+    const header = page.locator('nb-layout-header')
+    await expect(header).toHaveCSS('background-color', 'rgb(50, 50, 89)')
+
+    const colors = {
+       "Light" : "rgb(255, 255, 255)",
+       "Dark"  : "rgb(34, 43, 69)",
+       "Cosmic": "rgb(50, 50, 89)",
+       "Corporate": "rgb(255, 255, 255)"
+    }
+
+    await dropDownMenu.click()
+    for (const color in colors){
+        await optionList.filter({hasText: color}).click()
+        await expect(header).toHaveCSS('background-color', colors[color])
+        if (color  != "Corporate"){
+            await dropDownMenu.click()
+        }
+    }
+})
