@@ -258,4 +258,5 @@ test('Sliders', async({page}) =>{
    await page.waitForTimeout(500)
    await page.mouse.move(x + 100, y + 100)
    await page.mouse.up()
+   await expect(tempBox).toContainText('30')
 })
