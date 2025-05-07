@@ -1,12 +1,22 @@
-import {Page} from "@playwright/test"
+import {Locator, Page} from "@playwright/test"
 
 export class NavigationPage {
 
     readonly page: Page
+    readonly formLayoutMenuItem: Locator
+    readonly datePickerMenuItem: Locator
+    readonly smartTableMenuItem: Locator
+    readonly toastrMenuItem: Locator
+    readonly tooltipMenuItem: Locator
 
     constructor(page: Page){
 
         this.page = page
+        this.formLayoutMenuItem = page.getByText('Forms')
+        this.datePickerMenuItem = page.getByText('Forms')
+        this.smartTableMenuItem = page.getByText('Tables & Data')
+        this.toastrMenuItem = page.getByText('Modal & Overlays')
+        this.tooltipMenuItem = page.getByText('Modal & Overlays')
 
     }
 
@@ -14,38 +24,48 @@ export class NavigationPage {
         //await this.page.getByText('Forms').click()
         //After refactoring...
         await this.selectGroupMenuItem('Forms')
-        await this.page.getByText('Form Layouts').click()
+        //After refactoring one more time with  locator in the constructor...
+        //await this.page.getByText('Form Layouts').click()
+        await this.formLayoutMenuItem.click()
     }
 
     async datepickerPage(){
         //await this.page.getByText('Forms').click()
         //After refactoring...
         await this.selectGroupMenuItem('Forms')
-        await this.page.waitForTimeout(1000)
-        await this.page.getByText('Datepicker').click()
+        //After refactoring one more time with  locator in the constructor...
+        //await this.page.waitForTimeout(1000)
+        //await this.page.getByText('Datepicker').click()
+        await this.datePickerMenuItem.click()
+
     }
 
     async smartTablePage(){
         //await this.page.getByText('Tables & Data').click()
         //After refactoring...
         await this.selectGroupMenuItem('Tables & Data')
-        await this.page.getByText('Smart Table').click()
+        //After refactoring one more time with  locator in the constructor...
+        //await this.page.getByText('Smart Table').click()
+        await this.smartTableMenuItem.click()
     }
 
     async toastrPage(){
         //await this.page.getByText('Modal & Overlays').click()
         //After refactoring...
         await this.selectGroupMenuItem('Modal & Overlays')
-        await this.page.getByText('Toastr').click()
+        //After refactoring one more time with  locator in the constructor...
+        //await this.page.getByText('Toastr').click()
+        await this.toastrMenuItem.click()
     }
 
     async tooltipPage(){
         //await this.page.getByText('Modal & Overlays').click()
         //After refactoring...
         await this.selectGroupMenuItem('Modal & Overlays')
-        await this.page.getByText('Tooltip').click()
+        //After refactoring one more time with  locator in the constructor...
+        //await this.page.getByText('Tooltip').click()
+        await this.tooltipMenuItem.click()
     }
-
 
     private async selectGroupMenuItem(groupItemTitle: string){
         const groupMenuItem = this.page.getByTitle(groupItemTitle)
