@@ -12,11 +12,11 @@ export class NavigationPage {
     constructor(page: Page){
 
         this.page = page
-        this.formLayoutMenuItem = page.getByText('Forms')
-        this.datePickerMenuItem = page.getByText('Forms')
-        this.smartTableMenuItem = page.getByText('Tables & Data')
-        this.toastrMenuItem = page.getByText('Modal & Overlays')
-        this.tooltipMenuItem = page.getByText('Modal & Overlays')
+        this.formLayoutMenuItem = page.getByText('Form Layouts')
+        this.datePickerMenuItem = page.getByText('Datepicker')
+        this.smartTableMenuItem = page.getByText('Smart table')
+        this.toastrMenuItem = page.getByText('Toastr')
+        this.tooltipMenuItem = page.getByText('Tooltip')
 
     }
 
