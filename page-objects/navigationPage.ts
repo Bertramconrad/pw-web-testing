@@ -1,8 +1,9 @@
 import {Locator, Page} from "@playwright/test"
+import { HelperBase } from "./helperBase"
 
-export class NavigationPage {
+export class NavigationPage extends HelperBase{
 
-    readonly page: Page
+    //readonly page: Page
     readonly formLayoutMenuItem: Locator
     readonly datePickerMenuItem: Locator
     readonly smartTableMenuItem: Locator
@@ -11,7 +12,8 @@ export class NavigationPage {
 
     constructor(page: Page){
 
-        this.page = page
+        //this.page = page
+        super(page)
         this.formLayoutMenuItem = page.getByText('Form Layouts')
         this.datePickerMenuItem = page.getByText('Datepicker')
         this.smartTableMenuItem = page.getByText('Smart table')
@@ -27,6 +29,7 @@ export class NavigationPage {
         //After refactoring one more time with  locator in the constructor...
         //await this.page.getByText('Form Layouts').click()
         await this.formLayoutMenuItem.click()
+        await this.waitForNumberOfSeconds(2)
     }
 
     async datePickerPage(){
@@ -37,6 +40,7 @@ export class NavigationPage {
         //await this.page.waitForTimeout(1000)
         //await this.page.getByText('Datepicker').click()
         await this.datePickerMenuItem.click()
+        await this.waitForNumberOfSeconds(2)
 
     }
 
@@ -47,6 +51,7 @@ export class NavigationPage {
         //After refactoring one more time with  locator in the constructor...
         //await this.page.getByText('Smart Table').click()
         await this.smartTableMenuItem.click()
+        await this.waitForNumberOfSeconds(2)
     }
 
     async toastrPage(){
@@ -56,6 +61,7 @@ export class NavigationPage {
         //After refactoring one more time with  locator in the constructor...
         //await this.page.getByText('Toastr').click()
         await this.toastrMenuItem.click()
+        await this.waitForNumberOfSeconds(2)
     }
 
     async tooltipPage(){
@@ -65,6 +71,7 @@ export class NavigationPage {
         //After refactoring one more time with  locator in the constructor...
         //await this.page.getByText('Tooltip').click()
         await this.tooltipMenuItem.click()
+        await this.waitForNumberOfSeconds(2)
     }
 
     private async selectGroupMenuItem(groupItemTitle: string){
