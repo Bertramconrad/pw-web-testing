@@ -1,6 +1,6 @@
 import {Page} from "@playwright/test"
 
-export class FormLayoutsPage {
+export class FormLayoutsPage{
 
     private readonly page: Page
 

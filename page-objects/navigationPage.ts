@@ -29,7 +29,7 @@ export class NavigationPage {
         await this.formLayoutMenuItem.click()
     }
 
-    async datepickerPage(){
+    async datePickerPage(){
         //await this.page.getByText('Forms').click()
         //After refactoring...
         await this.selectGroupMenuItem('Forms')
