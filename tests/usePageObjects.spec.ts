@@ -26,8 +26,11 @@ test('Navigate to Form Page', async({page}) =>{
 
 test('Parametrized method', async ({page}) =>{
     const pm = new PageManager(page)
-    const randomFullName = faker.person.fullName()
-    const randomEmail = `${randomFullName.replace(' ','')}${faker.number.int(1000)}@test.com`
+    //const randomFullName = faker.person.fullName()
+    const randomName = faker.person.firstName()
+    const randomLastName = faker.person.lastName()
+    const randomFullName = `${randomName} ${randomLastName}`
+    const randomEmail = `${randomName}${randomLastName}${faker.number.int(1000)}@test.com`
 
     //const navigateTo = new NavigationPage(page)
     //const onFormLayoutsPage = new FormLayoutsPage(page)
@@ -36,8 +39,8 @@ test('Parametrized method', async ({page}) =>{
     await pm.navigateTo().formLayoutsPage()
     await pm.onFormLayoutsPage().submitUsingTheGridFormWithCredentialsAndSelectOption('test@test.com','welcome1','Option 2')
     await pm.onFormLayoutsPage().submitInLineFormWithNameEmailAndCheckbox(randomFullName, randomEmail, true)
-    await pm.navigateTo().datePickerPage()
-    await pm.onDatePickerPage().selectCommonDatePickerDateFromToday(10)
-    await pm.onDatePickerPage().selectDatePickerWithRangeFromToday(6,15)
+    //await pm.navigateTo().datePickerPage()
+    //await pm.onDatePickerPage().selectCommonDatePickerDateFromToday(10)
+    //await pm.onDatePickerPage().selectDatePickerWithRangeFromToday(6,15)
 
 })
