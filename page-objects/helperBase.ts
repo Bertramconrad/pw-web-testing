@@ -8,6 +8,6 @@ export class HelperBase{
     }
 
     async waitForNumberOfSeconds(timeInSeconds: number){
-        await this.page.waitForTimeout(timeInSeconds * 1000)
+        await this.page.waitForTimeout(timeInSeconds * 100)
     }
 }
