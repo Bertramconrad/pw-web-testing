@@ -69,6 +69,17 @@ export default defineConfig<TestOptions>({
       },
     },
     {
+      name: 'pageObjectFullScreen',
+      testMatch: 'usePageObjects.spec.ts',
+      use: { 
+        ...devices['Desktop Chrome'],
+        viewport: {width: 1920, height: 1080},
+        baseURL: 'http://localhost:4200',
+        globalsQaUrl: 'https://www.globalsqa.com/demo-site/draganddrop/'
+  
+      },
+    },
+    {
       name: 'chromium',
       use: { ...devices['Desktop Chrome'] },
     },
