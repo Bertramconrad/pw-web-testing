@@ -6,7 +6,7 @@ import { faker } from '@faker-js/faker'
 //import { DatePickerPage } from '../page-objects/datePickerPage'
 
 test.beforeEach( async({page}) =>{
-    await page.goto('http://localhost:4200/')
+    await page.goto('/')
 })
 
 test('Navigate to Form Page', async({page}) =>{
@@ -37,7 +37,7 @@ test('Parametrized method', async ({page}) =>{
     //const onDatePickerPage = new DatePickerPage(page)
 
     await pm.navigateTo().formLayoutsPage()
-    await pm.onFormLayoutsPage().submitUsingTheGridFormWithCredentialsAndSelectOption('test@test.com','welcome1','Option 2')
+    await pm.onFormLayoutsPage().submitUsingTheGridFormWithCredentialsAndSelectOption(process.env.USERNAME,process.env.PASSWORD,'Option 2')
     //await page.screenshot({path: 'screenshots/formLayoutsPage.png'})
     //const buffer = page.screenshot()
     //console.log((await buffer).toString('base64'))
