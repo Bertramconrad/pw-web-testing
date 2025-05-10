@@ -1,12 +1,14 @@
 import {test, expect} from "@playwright/test"
 
+test.describe.configure({mode: 'parallel'})
+
 test.beforeEach( async({page}) =>{
 
     await page.goto('http://localhost:4200/')
 
 })
 
-test.describe.only('Form Layouts Page', ()=> {
+test.describe('Form Layouts Page', ()=> {
     test.describe.configure({retries: 2})
 
     test.beforeEach( async({page}) => {
@@ -25,11 +27,12 @@ test.describe.only('Form Layouts Page', ()=> {
         await usingTheGridEmailInput.fill('test@test.com')        
         await usingTheGridEmailInput.clear()
         //Simulate the user's keystroke.
-        await usingTheGridEmailInput.pressSequentially('test2@test.com', {delay: 500})
+        //await usingTheGridEmailInput.pressSequentially('test2@test.com', {delay: 500})
+        await usingTheGridEmailInput.pressSequentially('test2@test.com')
 
         //Generic assertion
         const inputValue = await usingTheGridEmailInput.inputValue()
-        expect(inputValue).toEqual('test2@test.com1')
+        expect(inputValue).toEqual('test2@test.com')
 
         //Locator assertion
         await expect(usingTheGridEmailInput).toHaveValue('test2@test.com')
