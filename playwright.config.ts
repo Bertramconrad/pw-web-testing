@@ -30,16 +30,22 @@ export default defineConfig<TestOptions>({
   /* Opt out of parallel tests on CI. */
   workers: process.env.CI ? 1 : undefined,
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
-  reporter: 'html',
+  //reporter: 'html',
+  //reporter: 'list',
+  reporter: [
+    ['json', {outputFile: 'test-results/jsonReport.json'}],
+    ['junit', {outputFile: 'test-results/junitReport.xml'}],
+    ['allure-playwright']
+  ],
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
     /* Base URL to use in actions like `await page.goto('/')`. */
     //baseURL: 'http://localhost:4200',
     globalsQaUrl: 'https://www.globalsqa.com/demo-site/draganddrop/',
     //Handel the baseURL without using the Project section.
-    baseURL: process.env.DEV === '1' ? 'http://localhost:4200'
-           : process.env.STAGING === '1' ? 'http://localhost:4200'
-           : 'http://localhost:4200',
+    baseURL: process.env.DEV === '1' ? 'http://localhost:4200/'
+           : process.env.STAGING === '1' ? 'http://localhost:4200/'
+           : 'http://localhost:4200/',
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: 'on', //'on-first-retry'
@@ -57,7 +63,7 @@ export default defineConfig<TestOptions>({
       name: 'dev',
       use: { 
         ...devices['Desktop Chrome'],
-        baseURL: 'http://localhost:4200',
+        baseURL: 'http://localhost:4200/',
         globalsQaUrl: 'https://www.globalsqa.com/demo-site/draganddrop/'
       }      
     },
@@ -65,7 +71,7 @@ export default defineConfig<TestOptions>({
       name: 'staging',
       use: { 
         ...devices['Desktop Chrome'],
-        baseURL: 'http://localhost:4200',
+        baseURL: 'http://localhost:4200/',
         globalsQaUrl: 'https://www.globalsqa.com/demo-site/draganddrop/'
       },
     },
@@ -75,7 +81,7 @@ export default defineConfig<TestOptions>({
       use: { 
         ...devices['Desktop Chrome'],
         viewport: {width: 1920, height: 1080},
-        baseURL: 'http://localhost:4200',
+        baseURL: 'http://localhost:4200/',
         globalsQaUrl: 'https://www.globalsqa.com/demo-site/draganddrop/'
   
       },
@@ -97,7 +103,7 @@ export default defineConfig<TestOptions>({
       testMatch: 'testMobile.spec.ts',
       use: { 
         ...devices['iPhone 13 Pro'], 
-        baseURL: 'http://localhost:4200', 
+        baseURL: 'http://localhost:4200/', 
       },
     },
 
