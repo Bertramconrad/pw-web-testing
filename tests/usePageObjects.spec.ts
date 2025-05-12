@@ -9,7 +9,7 @@ test.beforeEach( async({page}) =>{
     await page.goto('/')
 })
 
-test('Navigate to Form Page', async({page}) =>{
+test('Navigate to Form Page @smoke @regression', async({page}) =>{
     const pm = new PageManager(page)
     //const navigateTo = new NavigationPage(page)
     //await navigateTo.formLayoutsPage()
@@ -24,7 +24,7 @@ test('Navigate to Form Page', async({page}) =>{
     await pm.navigateTo().tooltipPage()
 })
 
-test('Parametrized method', async ({page}) =>{
+test('Parametrized method @smoke', async ({page}) =>{
     const pm = new PageManager(page)
     //const randomFullName = faker.person.fullName()
     const randomName = faker.person.firstName()
@@ -45,6 +45,6 @@ test('Parametrized method', async ({page}) =>{
     //await page.locator('nb-card', {hasText: "Inline Form"}).screenshot({path: 'screenshots/formInLinePage.png'})
     await pm.navigateTo().datePickerPage()
     await pm.onDatePickerPage().selectCommonDatePickerDateFromToday(10)
-    await pm.onDatePickerPage().selectDatePickerWithRangeFromToday(6,15)
+    await pm.onDatePickerPage().selectDatePickerWithRangeFromToday(1,2)
 
 })

@@ -49,6 +49,7 @@ export class DatePickerPage extends HelperBase{
         //await this.page.locator('[class="day-cell ng-star-inserted"]').getByText(expectedDate, {exact: true}).click()
         //The next instruction changed to improve the locator to make it function to both, common and range picker date.
         await this.page.locator('.day-cell.ng-star-inserted').getByText(expectedDate, {exact: true}).click()
+        //await this.page.locator('[class="day-cell ng-star-inserted"]').getByText(expectedDate, {exact: true}).click()
         return dateToAssert
         
     }
