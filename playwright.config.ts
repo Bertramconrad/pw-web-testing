@@ -14,6 +14,7 @@ require('dotenv').config();
  * See https://playwright.dev/docs/test-configuration.
  */
 export default defineConfig<TestOptions>({
+//export default defineConfig({
   timeout: 50000,
   globalTimeout: 60000,
   expect: {
@@ -36,9 +37,9 @@ export default defineConfig<TestOptions>({
     //baseURL: 'http://localhost:4200',
     globalsQaUrl: 'https://www.globalsqa.com/demo-site/draganddrop/',
     //Handel the baseURL without using the Project section.
-    baseURL: process.env.DEV === '1' ? 'http://localhost:4200/'
-           : process.env.STAGING === '1' ? 'http://localhost:4200/'
-           : 'http://localhost:4200/',
+    baseURL: process.env.DEV === '1' ? 'http://localhost:4200'
+           : process.env.STAGING === '1' ? 'http://localhost:4200'
+           : 'http://localhost:4200',
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: 'on', //'on-first-retry'
@@ -90,6 +91,14 @@ export default defineConfig<TestOptions>({
     {
       name: 'webkit',
       use: { ...devices['Desktop Safari'] },
+    },
+    {
+      name: 'mobile',      
+      testMatch: 'testMobile.spec.ts',
+      use: { 
+        ...devices['iPhone 13 Pro'], 
+        baseURL: 'http://localhost:4200', 
+      },
     },
 
     /* Test against mobile viewports. */
