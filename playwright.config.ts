@@ -18,7 +18,8 @@ export default defineConfig<TestOptions>({
   timeout: 50000,
   globalTimeout: 60000,
   expect: {
-    timeout: 50000
+    timeout: 50000,
+    toMatchSnapshot: {maxDiffPixels: 50}
   },
   testDir: './tests',
   /* Run tests in files in parallel */
@@ -33,9 +34,10 @@ export default defineConfig<TestOptions>({
   //reporter: 'html',
   //reporter: 'list',
   reporter: [
-    ['json', {outputFile: 'test-results/jsonReport.json'}],
-    ['junit', {outputFile: 'test-results/junitReport.xml'}],
-    ['allure-playwright']
+    ['html']
+    //['json', {outputFile: 'test-results/jsonReport.json'}],
+    //['junit', {outputFile: 'test-results/junitReport.xml'}],
+    //['allure-playwright']
   ],
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {

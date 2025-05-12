@@ -9,7 +9,7 @@ test.beforeEach( async({page}) =>{
 })
 
 test.describe('Form Layouts Page @block', ()=> {
-    //test.describe.configure({retries: 2})
+    test.describe.configure({retries: 0})
 
     test.beforeEach( async({page}) => {
         await page.getByText('Forms').click()
@@ -39,10 +39,14 @@ test.describe('Form Layouts Page @block', ()=> {
     })
 
     test('Radio buttons', async({page}) =>{
-        const usingTheGridRadioButton = page.locator('nb-card', {hasText: "Using the Grid"}).getByRole('radio', {name: "Option 1"})
+        const usingTheGridRadioButton = page.locator('nb-card', {hasText: "Using the Grid"}).getByRole('radio', {name: "Option 2"})        
 
         await usingTheGridRadioButton.check({force: true})
         const statusRadio = await usingTheGridRadioButton.isChecked()
+
+        const usingTheGridForm = page.locator('nb-card', {hasText: "Using The Grid"})
+        //await expect(usingTheGridForm).toHaveScreenshot({maxDiffPixels: 250})
+
         expect(statusRadio).toBeTruthy()
         await expect(usingTheGridRadioButton).toBeChecked()
 
