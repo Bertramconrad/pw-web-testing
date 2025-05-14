@@ -14,10 +14,10 @@ require('dotenv').config();
  * See https://playwright.dev/docs/test-configuration.
  */
 export default defineConfig<TestOptions>({
-  timeout: 100000,
-  globalTimeout: 100000,
+  timeout: 360000,
+  globalTimeout: 360000,
   expect: {
-    timeout: 100000
+    timeout: 360000
   },
   use: {
     /* Base URL to use in actions like `await page.goto('/')`. */

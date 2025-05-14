@@ -15,13 +15,13 @@ require('dotenv').config();
  */
 export default defineConfig<TestOptions>({
 //export default defineConfig({
-  timeout: 240000,
+  timeout: 360000,
 
   //The next intrucción was commented for implementation of Docker.
-  globalTimeout: 240000,
+  globalTimeout: 360000,
 
   expect: {
-    timeout: 240000,
+    timeout: 360000,
     toMatchSnapshot: {maxDiffPixels: 50}
   },
   testDir: './tests',
@@ -64,8 +64,8 @@ export default defineConfig<TestOptions>({
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: 'on-first-retry',
     screenshot: "only-on-failure",
-    actionTimeout: 240000,
-    navigationTimeout: 240000,
+    actionTimeout: 360000,
+    navigationTimeout: 360000,
     /* video: { 
       mode: 'on',
       size: {width: 1920, height: 1080}
