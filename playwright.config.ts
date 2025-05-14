@@ -43,7 +43,8 @@ export default defineConfig<TestOptions>({
      "@argos-ci/playwright/reporter",
      {
        // Upload to Argos on CI only.
-       uploadToArgos: !!process.env.CI,       
+       uploadToArgos: !!process.env.CI,                  
+       token: "tokenless-github-eyJvd25lciI6IkJlcnRyYW1jb25yYWQiLCJyZXBvc2l0b3J5IjoicHctd2ViLXRlc3RpbmciLCJqb2JJZCI6InRlc3QiLCJydW5JZCI6IjE1MDIyOTQ1MDEyIiwicHJOdW1iZXIiOm51bGx9"
      },
     ],
     //['json', {outputFile: 'test-results/jsonReport.json'}],
