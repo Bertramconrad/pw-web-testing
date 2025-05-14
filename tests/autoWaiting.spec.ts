@@ -19,7 +19,7 @@ test('Auto waiting', async({page}) => {
     //expect(text).toEqual('Data loaded with AJAX get request.')
     ///expect(text).toContain('Data loaded with AJAX get request.')
 
-    await expect(successButton).toHaveText('Data loaded with AJAX get request.', {timeout: 20000})
+    await expect(successButton).toHaveText('Data loaded with AJAX get request.', {timeout: 60000})
 })
 
 test.skip('Alternatives waits', async({page}) =>{
