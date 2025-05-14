@@ -50,7 +50,7 @@ test('Parametrized method @smoke', async ({page}) =>{
 
 })
 
-test.only('Testing With ARGOS CI...', async({page}) =>{
+test('Testing With ARGOS CI', async({page}) =>{
     const pm = new PageManager(page)
     //const navigateTo = new NavigationPage(page)
     //await navigateTo.formLayoutsPage()
