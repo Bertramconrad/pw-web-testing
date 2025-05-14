@@ -37,7 +37,18 @@ export default defineConfig<TestOptions>({
   //reporter: 'html',
   //reporter: 'list',
   reporter: [
-    ['html']
+    ['html'],
+    //process.env.CI ? ["dot"] : ["list"],
+    //[
+    // "@argos-ci/playwright/reporter",
+    // {
+       // Upload to Argos on CI only.
+    //   uploadToArgos: !!process.env.CI,
+       // Set your Argos token (required if not using GitHub Actions).
+       //We do not need the token because we are integrated with Argos by github.
+       //token: "<YOUR-ARGOS-TOKEN>",
+    // },
+    //],
     //['json', {outputFile: 'test-results/jsonReport.json'}],
     //['junit', {outputFile: 'test-results/junitReport.xml'}],
     //['allure-playwright']
@@ -53,7 +64,8 @@ export default defineConfig<TestOptions>({
            : 'http://localhost:4200/',
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
-    trace: 'on', //'on-first-retry'
+    trace: 'on-first-retry',
+    screenshot: "only-on-failure",
     actionTimeout: 50000,
     navigationTimeout: 30000,
     /* video: { 

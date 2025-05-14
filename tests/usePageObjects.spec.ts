@@ -1,6 +1,7 @@
 import {test, expect} from '@playwright/test'
 import { PageManager } from '../page-objects/pageManager'
 import { faker } from '@faker-js/faker'
+//import {argosScreenShot} from '@argos-ci/playwright'
 //import {NavigationPage} from '../page-objects/navigationPage'
 //import { FormLayoutsPage } from '../page-objects/formLayoutsPage'
 //import { DatePickerPage } from '../page-objects/datePickerPage'
@@ -47,4 +48,21 @@ test('Parametrized method @smoke', async ({page}) =>{
     await pm.onDatePickerPage().selectCommonDatePickerDateFromToday(10)
     await pm.onDatePickerPage().selectDatePickerWithRangeFromToday(1,2)
 
+})
+
+test.only('Testing With ARGOS CI...', async({page}) =>{
+    const pm = new PageManager(page)
+    //const navigateTo = new NavigationPage(page)
+    //await navigateTo.formLayoutsPage()
+    //await navigateTo.datePickerPage()
+    //await navigateTo.smartTablePage()
+    //await navigateTo.toastrPage()
+    //await navigateTo.tooltipPage()
+    await pm.navigateTo().formLayoutsPage()
+    //await argosScreenShot(page, "form Layouts Page")
+    await pm.navigateTo().datePickerPage()
+    //await argosScreenShot(page, "datepicker Page")
+    //await pm.navigateTo().smartTablePage()
+    //await pm.navigateTo().toastrPage()
+    //await pm.navigateTo().tooltipPage()
 })
